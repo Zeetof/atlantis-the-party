@@ -1,0 +1,179 @@
+{
+  "brand": "ATLANTIS THE PARTY",
+  "organizer": "WESTHAN.ENT",
+  "source": "Two user-supplied WhatsApp ZIP files",
+  "assets": [
+    {
+      "path": "01_Atlantis_1.0/images/Atlantis_1.0_original_flyer.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.25.jpeg",
+      "type": "image",
+      "edition": "01_Atlantis_1.0",
+      "event_date_reference": "August 18",
+      "dimensions": [
+        1052,
+        1280
+      ],
+      "notes": "First edition main flyer"
+    },
+    {
+      "path": "02_Atlantis_2.0/images/Atlantis_2.0_general_flyer.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.25 (1).jpeg",
+      "type": "image",
+      "edition": "02_Atlantis_2.0",
+      "event_date_reference": "December 29",
+      "dimensions": [
+        1024,
+        1280
+      ],
+      "notes": "Second edition general flyer"
+    },
+    {
+      "path": "02_Atlantis_2.0/images/Atlantis_2.0_artist_DJ_hypemen_lineup.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.25 (2).jpeg",
+      "type": "image",
+      "edition": "02_Atlantis_2.0",
+      "event_date_reference": "December 29",
+      "dimensions": [
+        1024,
+        1280
+      ],
+      "notes": "Second edition lineup; NOT confirmed for fourth edition"
+    },
+    {
+      "path": "02_Atlantis_2.0/images/Atlantis_2.0_Scotty_Olorin_promo.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.26 (1).jpeg",
+      "type": "image",
+      "edition": "02_Atlantis_2.0",
+      "event_date_reference": "December 29",
+      "dimensions": [
+        1010,
+        1280
+      ],
+      "notes": "Second edition Scotty Olorin performer promo"
+    },
+    {
+      "path": "02_Atlantis_2.0/images/Atlantis_2.0_Wavestar_promo.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.26.jpeg",
+      "type": "image",
+      "edition": "02_Atlantis_2.0",
+      "event_date_reference": "December 29",
+      "dimensions": [
+        960,
+        1280
+      ],
+      "notes": "Second edition Wavestar performer promo"
+    },
+    {
+      "path": "03_Atlantis_3.0/images/Atlantis_3.0_original_flyer.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.26 (2).jpeg",
+      "type": "image",
+      "edition": "03_Atlantis_3.0",
+      "event_date_reference": "August 19 user / August 18 flyer",
+      "dimensions": [
+        1042,
+        1280
+      ],
+      "notes": "Third edition flyer (conflicting August date) - flag for review"
+    },
+    {
+      "path": "04_Atlantis_4.0/images/Atlantis_4.0_December_30_Juice_WRLD_tribute_flyer.jpeg",
+      "original_name": "WhatsApp Image 2026-11-01 at 12.03.26 (3).jpeg",
+      "type": "image",
+      "edition": "04_Atlantis_4.0",
+      "event_date_reference": "December 30",
+      "dimensions": [
+        1024,
+        1280
+      ],
+      "notes": "Fourth edition flyer, 7-year Juice WRLD remembrance"
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/review_before_publishing/Atlantis_3.0_clip_review_01.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.03.26.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 3.7,
+      "notes": "Short portrait selfie clip, visually different from event footage; check consent/context"
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_02.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.14.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 6.6,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_03.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.15.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 25.7,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_04.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.21.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 17.1,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_05.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.23.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 14.0,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_06.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.27.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 14.2,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_07.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.31.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 11.9,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_08.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.38.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 21.7,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_09.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.40.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 27.0,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    },
+    {
+      "path": "03_Atlantis_3.0/videos/event_highlights/Atlantis_3.0_highlight_10.mp4",
+      "original_name": "WhatsApp Video 2026-11-01 at 12.06.49.mp4",
+      "type": "video",
+      "edition": "03_Atlantis_3.0",
+      "duration_seconds": 32.9,
+      "notes": "Live crowd/performance footage. Do not identify the performer without supplied credits."
+    }
+  ],
+  "review_items": [
+    "The user dates Atlantis 3.0 as August 19, but the corresponding flyer visibly reads AUG 18. Verify before publishing event-history dates.",
+    "The 3.7-second video in review_before_publishing looks like a personal portrait/selfie rather than clear stage/crowd footage. Verify attribution and permission.",
+    "No original website source code, ticket checkout URL, ticket provider API credentials, or backend found in the two ZIP files.",
+    "Existing artist / DJ / hypemen flyer is for Atlantis 2.0 only; do not populate Atlantis 4.0 lineup from that flyer.",
+    "Atlantis 4.0 poster states ticket prices, but reconfirm current prices and ticket provider before enabling purchase.",
+    "Juice WRLD tracks, lyrics, photos and album art require authorized links/embeds and any necessary usage permissions."
+  ]
+}

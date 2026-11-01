@@ -1,0 +1,252 @@
+// ATLANTIS THE PARTY — PostgreSQL schema used by the Netlify build.
+// Local development uses prisma/schema.prisma (SQLite). Keep the models in sync.
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id               String             @id @default(cuid())
+  slug             String             @unique
+  title            String
+  editionLabel     String
+  eventDate        DateTime
+  timeStart        String
+  timeEnd          String
+  timezone         String             @default("Africa/Lagos")
+  venueName        String
+  venueAddress     String
+  description      String
+  ticketUrl        String
+  status           String             @default("UPCOMING")
+  heroImage        String
+  detailsVerified  Boolean            @default(false)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  ticketCategories TicketCategory[]
+  claims           CardClaim[]
+  verifications    TicketVerification[]
+}
+
+model Edition {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  number      Int
+  name        String
+  label       String
+  dateDisplay String
+  dateISO     String?
+  dateStatus  String      @default("YEAR_TO_CONFIRM")
+  venue       String?
+  description String
+  coverImage  String?
+  status      String      @default("PUBLISHED")
+  note        String?
+  sortOrder   Int
+  performers  Performer[]
+  media       Media[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Performer {
+  id        String   @id @default(cuid())
+  editionId String
+  name      String
+  category  String
+  imagePath String?
+  bio       String?
+  socials   String?
+  status    String   @default("DRAFT")
+  featured  Boolean  @default(false)
+  sortOrder Int      @default(0)
+  edition   Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([editionId, name, category])
+  @@index([editionId, status])
+}
+
+model Media {
+  id             String   @id @default(cuid())
+  key            String   @unique
+  editionId      String
+  type           String
+  src            String?
+  poster         String?
+  caption        String
+  width          Int?
+  height         Int?
+  durationSeconds Float?
+  status         String   @default("PENDING")
+  sortOrder      Int      @default(0)
+  storagePath    String?
+  edition        Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([editionId, status, type])
+}
+
+model TicketCategory {
+  id         String  @id @default(cuid())
+  eventId    String
+  name       String
+  priceNaira Int
+  currency   String  @default("NGN")
+  channel    String
+  note       String?
+  verified   Boolean @default(false)
+  sortOrder  Int     @default(0)
+  event      Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, name, channel])
+}
+
+model TicketVerification {
+  id                  String     @id @default(cuid())
+  eventId             String
+  provider            String     @default("popout")
+  providerRefHash     String     @unique
+  providerRefCipher   String?
+  orderRefHash        String
+  orderRefLast4       String
+  purchaserEmailHash  String
+  purchaserEmailMasked String
+  purchaserEmailCipher String?
+  quantity            Int        @default(1)
+  status              String     @default("VERIFIED")
+  source              String     @default("MANUAL")
+  importBatch         String?
+  purchasedAt         DateTime?
+  rawPayload          String?
+  receivedAt          DateTime   @default(now())
+  verifiedAt          DateTime?
+  inviteTokenHash     String?    @unique
+  inviteTokenCipher   String?
+  inviteExpiresAt     DateTime?
+  inviteSentAt        DateTime?
+  inviteStatus        String?
+  inviteError         String?
+  event               Event      @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  claim               CardClaim?
+
+  @@index([purchaserEmailHash, status])
+  @@index([status, inviteStatus])
+}
+
+model CardClaim {
+  id              String      @id @default(cuid())
+  publicRef       String      @unique
+  eventId         String
+  verificationId  String?     @unique
+  emailCipher     String
+  emailHash       String
+  emailMasked     String
+  displayName     String
+  ticketRefCipher String?
+  ticketRefLast4  String?
+  status          String      @default("MANUAL_REVIEW")
+  source          String      @default("MANUAL")
+  adminNote       String?
+  ipHash          String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  decidedAt       DateTime?
+  event           Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  verification    TicketVerification? @relation(fields: [verificationId], references: [id], onDelete: SetNull)
+  card            TributeCard?
+
+  @@index([status, createdAt])
+  @@index([emailHash])
+}
+
+model TributeSong {
+  id          String        @id @default(cuid())
+  title       String        @unique
+  officialUrl String
+  platform    String        @default("Spotify")
+  approved    Boolean       @default(false)
+  linkStatus  String        @default("SEARCH_FALLBACK")
+  sortOrder   Int           @default(0)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  cards       TributeCard[]
+}
+
+model TributeCard {
+  id               String          @id @default(cuid())
+  publicId         String          @unique
+  cardNumber       String          @unique
+  claimId          String          @unique
+  displayName      String
+  songId           String
+  artworkVariant   String          @default("chrome-999")
+  accessTokenHash  String          @unique
+  accessTokenCipher String
+  tokenExpiresAt   DateTime
+  downloads        Int             @default(0)
+  issuedAt         DateTime        @default(now())
+  claim            CardClaim       @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  song             TributeSong     @relation(fields: [songId], references: [id])
+  emailDeliveries  EmailDelivery[]
+
+  @@index([issuedAt])
+}
+
+model EmailDelivery {
+  id            String      @id @default(cuid())
+  cardId        String
+  toEmailMasked String
+  provider      String      @default("resend")
+  status        String      @default("PENDING")
+  attempts      Int         @default(0)
+  lastError     String?
+  messageId     String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  sentAt        DateTime?
+  card          TributeCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+}
+
+model AdminUser {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  name         String
+  passwordHash String
+  role         String     @default("EDITOR")
+  active       Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  adminId    String?
+  actorEmail String
+  action     String
+  entity     String
+  entityId   String?
+  metadata   String?
+  ipHash     String?
+  createdAt  DateTime @default(now())
+  admin      AdminUser? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+}
+
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
