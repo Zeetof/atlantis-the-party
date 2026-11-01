@@ -41,6 +41,8 @@ Use Neon, Supabase, Railway or any managed PostgreSQL. For Neon:
 
 The database starts empty. The first Netlify build creates every table and seeds content.
 
+**Netlify DB:** this project uses Prisma migrations, so it expects a standard `DATABASE_URL`. Netlify's managed database is only available on credit-based plans; on older or free team plans, provisioning is rejected with `403 Forbidden`. Use an external PostgreSQL provider, or upgrade the team before enabling Netlify DB.
+
 Serverless functions open database connections per instance. For a busy launch, use your provider's pooled URL for runtime queries and run migrations separately with a direct URL. If the pooled URL cannot run `prisma migrate deploy`, run `npm run db:deploy` once with the direct URL and change the build command to omit the migrate step. A low-traffic event site can usually run on the direct URL throughout.
 
 ## 2. Add environment variables
@@ -116,6 +118,10 @@ SMOKE_BASE_URL="https://your-site.netlify.app" npm run qa:smoke
 - **Private files.** `storage/private` is not part of the deployment; withheld media must stay out of public storage.
 
 ## Troubleshooting
+
+**The repository is missing from the Netlify import list** — Netlify's GitHub App does not have access to it. Open GitHub **Settings → Applications → Netlify → Configure** and add the repository, or install the app for it, then retry the import.
+
+**Netlify DB returns `403 Forbidden`** — the team is not on a credit-based plan. Upgrade the team, or use an external PostgreSQL connection string instead.
 
 **Build fails with `the URL must start with postgresql://`** — `DATABASE_URL` still points at SQLite, or is missing. Set the PostgreSQL URL for the Netlify build environment.
 
